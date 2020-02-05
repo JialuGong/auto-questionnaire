@@ -1,5 +1,5 @@
 # auto questionnaire
 
-> now have some bug to fix 〒▽〒
+> Have some bug to fix now〒▽〒
 
 ---
