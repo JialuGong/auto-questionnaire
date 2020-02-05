@@ -1,0 +1,22 @@
+{
+  "name": "rob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ghy",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "form-data": "^3.0.0",
+    "moment": "^2.24.0",
+    "qs": "^6.9.1",
+    "superagent": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
