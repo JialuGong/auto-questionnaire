@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "run":"node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ghy",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "form-data": "^3.0.0",
     "moment": "^2.24.0",
