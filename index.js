@@ -1,7 +1,7 @@
 const superagent = require('superagent');
-const moment = require('moment')
+//const moment = require('moment')
 const cheerio = require('cheerio')
-const formData = require('./data')
+const getSubmitdata = require('./data')
 
 var getUrl = "https://www.wjx.cn/jq/55701614.aspx"
 var url = "https://www.wjx.cn/joinnew/processjq.ashx"
@@ -12,7 +12,7 @@ var randomIP = `47.${63 + Math.ceil(Math.random() * 4)}.${Math.ceil(Math.random(
 
 console.log(getUrl.replace(/[^0-9]/ig, ""));
 var params = {
-    'curid': getUrl.replace(/[^0-9]/ig, ""),
+    'curID': getUrl.replace(/[^0-9]/ig, ""),
     'source': 'directphone',
     'submittype': 1,
     'hlv': 1,
@@ -25,12 +25,11 @@ const getConfig = () => {
     return new Promise((resolve, reject) => {
         superagent.get(getUrl).end((err,res) => {
             if (res.status=== 200) {
+                superagent.get('/cookied-page');
                 let data = res.text
                 let $ = cheerio.load(data)
                 let script = $('script')
-                console.log(`html is ${script.length}`)
                 params.starttime = $("#starttime").val()
-                console.log(`start time is ${params.starttime}`)
                 script.each(function (i, elem) {
                     let text = $(this).html()
                     if (text.match('jqnonce')) {
@@ -57,7 +56,7 @@ const getConfig = () => {
 
 getConfig().then(res => {
     //随机生成ktimes
-    params.ktimes = Math.ceil(Math.random() * 20)
+    params.ktimes = Math.ceil(Math.random() * 40)
     //生成jpsign
     function jqsignGenerator(ktimes, jqnonce) {
         var b = ktimes % 10
@@ -73,29 +72,33 @@ getConfig().then(res => {
     params.t = Date.now().toString() 
 
     var newParams = {
-        curid: params.curid,
         submittype: params.submittype,
-        source:params.source,
+        curid: params.curid,
         t: params.t,
         starttime: params.starttime,
         ktimes: params.ktimes,
         rn: params.rn,
-        rname: params.rname,
+        rname: 'test',
+       // source:params.source,
         hlv: params.hlv,
         jqnonce: params.jqnonce,
         jqsign: params.jqsign
     }
 
-
-    console.log(newParams)
-    
-    superagent.post(url)
-    .set('Content-Type','application/x-www-form-urlencoded')
-    .set('Sec-Fetch-Mode','cors')
-    .query(params)
-    .send(formData)
-    .then(res=>{
-        console.log(res.text)
+    getSubmitdata().then(data=>{
+       console.log(`==========params are`)
+       console.log(params)
+       console.log(`==========formdata is`)
+       console.log(data)
+        superagent.post(url)
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('Sec-Fetch-Mode', 'cors')
+            .query(params)
+            .send(data)
+            .then(res => {
+                console.log(res.text)
+            })
     })
+   
 })
 
