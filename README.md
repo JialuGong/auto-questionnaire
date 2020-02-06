@@ -1,7 +1,7 @@
 # auto questionnaire
 
-> Have some bug to fix now〒▽〒
----
+
+
 
 ### DESCRIPTION
 一个用于自动填写问卷星的问卷的工具。
@@ -29,6 +29,11 @@ params用于验证信息
 ![avatar](./.images/params.png)
 
 ![avatar](./.images/chrome.png)
+
+---
+
+### RESULT
+![avatart](./.images/result.gif)
 
 ---
 
