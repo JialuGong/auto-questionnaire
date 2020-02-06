@@ -8,7 +8,7 @@
 - 运行程序
 ```
 npm install
-npm run
+npm run dev
 ```
 - 查看运行结果
   - 如果控制台上的结果为`10〒/wjx/join/complete.aspx?q=55693469&JoinID=103917325529&jidx=9`，则已经正确提交
