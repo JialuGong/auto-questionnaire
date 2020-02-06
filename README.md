@@ -1,9 +1,14 @@
 # auto questionnaire
 
 > Have some bug to fix now〒▽〒
+---
+
+### DESCRIPTION
+一个用于自动填写问卷星的问卷的工具。
 
 ---
-### HOW To Use
+### HOW TO USE
+- 修改[index.js](./index.js)中的getUrl
 - 在[your_config.json](./your_config.json)下修改你的信息
 - 运行程序
 ```
@@ -18,6 +23,15 @@ npm run dev
 憨憨代码，希望各位观众姥爷不要见怪，若大佬发现bug或者运行错误之后多提issue(●ˇ∀ˇ●)
 
 --- 
+### 参数说明
+formdata为所提交的表单数据,数据的内容格式为 [题号]+'$'+[答案]+')'
+params用于验证信息
+![avatar](./.images/params.png)
+
+![avatar](./.images/chrome.png)
+
+---
+
 ### TODO
 - [ ] 添加定时功能
 
